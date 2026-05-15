@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Informe de Acceso a Plataformas - SMI Consultores</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Inter',sans-serif;background:#0d1b2a;color:#e0e6f0;print-color-adjust:exact;-webkit-print-color-adjust:exact;}
+  /* ── PORTADA ── */
+  .cover{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#0d1b2a 0%,#112233 50%,#0a2a1e 100%);padding:40px;text-align:center;page-break-after:always;}
+  .logo-wrap{margin-bottom:30px;}
+  .logo-wrap img{width:220px;border-radius:16px;box-shadow:0 0 40px rgba(147,210,120,0.3);}
+  .cover-badge{background:linear-gradient(90deg,#3ec16a,#00c4b4);color:#fff;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:6px 20px;border-radius:20px;margin-bottom:20px;display:inline-block;}
+  .cover h1{font-size:38px;font-weight:800;color:#fff;line-height:1.2;margin-bottom:12px;}
+  .cover h1 span{color:#3ec16a;}
+  .cover-sub{font-size:16px;color:#8faac0;margin-bottom:40px;max-width:500px;}
+  .cover-meta{background:rgba(255,255,255,0.05);border:1px solid rgba(62,193,106,0.3);border-radius:12px;padding:20px 40px;display:inline-flex;gap:40px;}
+  .cover-meta div{text-align:center;}
+  .cover-meta .label{font-size:10px;letter-spacing:2px;color:#3ec16a;text-transform:uppercase;margin-bottom:4px;}
+  .cover-meta .val{font-size:13px;color:#fff;font-weight:600;}
+  /* ── CONTENIDO ── */
+  .page{background:#fff;color:#1a2332;max-width:900px;margin:0 auto;padding:0;}
+  @media print{.page{max-width:100%;} .cover{page-break-after:always;} .section{page-break-inside:avoid;}}
+  /* HEADER de sección */
+  .section-header{background:linear-gradient(135deg,#0d1b2a,#1a3a2a);padding:28px 40px;display:flex;align-items:center;gap:16px;}
+  .section-header .num{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#3ec16a,#00c4b4);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;color:#fff;flex-shrink:0;}
+  .section-header h2{color:#fff;font-size:22px;font-weight:700;}
+  .section-header p{color:#8faac0;font-size:13px;margin-top:2px;}
+  /* BODY sección */
+  .section-body{background:#fff;padding:36px 40px;}
+  .info-box{background:#f0f8f4;border-left:4px solid #3ec16a;border-radius:0 10px 10px 0;padding:20px 24px;margin-bottom:24px;}
+  .info-box h3{color:#0d6e3f;font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px;}
+  .cred-row{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
+  .cred-label{font-size:12px;color:#555;width:90px;flex-shrink:0;font-weight:600;}
+  .cred-val{background:#1a2332;color:#3ec16a;font-family:monospace;font-size:14px;padding:6px 14px;border-radius:6px;font-weight:700;letter-spacing:0.5px;}
+  .cred-url{background:#1a2332;color:#00c4b4;font-family:monospace;font-size:12px;padding:6px 14px;border-radius:6px;font-weight:600;}
+  /* PASOS */
+  .steps{list-style:none;margin:20px 0;}
+  .steps li{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start;}
+  .step-num{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#0d1b2a,#1a3a4a);color:#3ec16a;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+  .steps li p{font-size:14px;color:#2c3e50;line-height:1.6;}
+  .steps li strong{color:#0d6e3f;}
+  /* IMÁGENES */
+  .img-wrap{margin:24px 0;border-radius:12px;overflow:hidden;border:2px solid #e0e8f0;box-shadow:0 4px 20px rgba(0,0,0,0.1);}
+  .img-wrap img{width:100%;display:block;}
+  .img-caption{background:#f0f4f8;padding:10px 16px;font-size:12px;color:#556;text-align:center;font-style:italic;}
+  /* ALERTA */
+  .alert{background:linear-gradient(135deg,#fff8e1,#fff3cd);border:1px solid #f0c040;border-radius:10px;padding:16px 20px;margin:20px 0;display:flex;gap:12px;align-items:flex-start;}
+  .alert-icon{font-size:22px;flex-shrink:0;}
+  .alert p{font-size:13px;color:#7a5c00;line-height:1.6;}
+  /* FLECHA ANOTACIÓN */
+  .annotation-wrap{position:relative;margin:24px 0;}
+  .annotation-wrap img{width:100%;border-radius:12px;border:2px solid #e0e8f0;}
+  .arrow-badge{background:#e53935;color:#fff;font-size:12px;font-weight:700;padding:6px 14px;border-radius:20px;display:inline-flex;align-items:center;gap:6px;margin-bottom:8px;}
+  /* PIE */
+  .doc-footer{background:linear-gradient(135deg,#0d1b2a,#0a2a1e);padding:24px 40px;display:flex;justify-content:space-between;align-items:center;margin-top:0;}
+  .doc-footer p{font-size:11px;color:#556;}
+  .doc-footer .brand{color:#3ec16a;font-weight:700;font-size:12px;}
+  /* DIVIDER */
+  .divider{height:1px;background:linear-gradient(90deg,transparent,#3ec16a,transparent);margin:8px 0;}
+  /* PLATFORM BADGE */
+  .platform-badge{display:inline-flex;align-items:center;gap:8px;background:#1a2332;border-radius:8px;padding:8px 16px;margin-bottom:20px;}
+  .platform-badge span{font-size:12px;color:#3ec16a;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════ PORTADA ══════════════════════════════════════ -->
+<div class="cover">
+  <div class="logo-wrap">
+    <img src="logo1.png" alt="System Data VMCC Logo">
+  </div>
+  <div class="cover-badge">📋 Documento Técnico Corporativo</div>
+  <h1>Guía de Acceso a<br><span>Plataformas Digitales</span></h1>
+  <p class="cover-sub">Manual de usuario para el ingreso a las plataformas corporativas de <strong>SMI Consultores</strong></p>
+  <div class="cover-meta">
+    <div><div class="label">Destinatario</div><div class="val">Eduardo Pérez</div></div>
+    <div><div class="label">Clasificación</div><div class="val">Confidencial</div></div>
+    <div><div class="label">Fecha</div><div class="val">Mayo 2026</div></div>
+    <div><div class="label">Versión</div><div class="val">1.0</div></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════ PÁGINA CONTENIDO ══════════════════════════════════════ -->
+<div class="page">
+
+  <!-- INTRODUCCIÓN -->
+  <div class="section-header">
+    <div class="num">📌</div>
+    <div>
+      <h2>Introducción y Alcance</h2>
+      <p>Descripción general de las plataformas asignadas</p>
+    </div>
+  </div>
+  <div class="section-body">
+    <p style="font-size:14px;color:#2c3e50;line-height:1.8;margin-bottom:18px;">
+      El presente documento tiene como finalidad proporcionar al usuario <strong>Eduardo Pérez</strong> las instrucciones 
+      detalladas y los datos de acceso necesarios para ingresar a las dos plataformas digitales corporativas que le han 
+      sido asignadas por <strong>SMI Consultores</strong>. Ambos accesos han sido habilitados y compartidos de forma institucional.
+    </p>
+    <div class="alert">
+      <div class="alert-icon">🔐</div>
+      <p><strong>Importante:</strong> Las credenciales detalladas en este documento son de carácter estrictamente 
+      personal y confidencial. Se recomienda no compartirlas con terceros y cambiar las contraseñas iniciales 
+      en el primer inicio de sesión.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px;">
+      <div style="background:#f0f8f4;border-radius:10px;padding:18px;border:1px solid #c8e6d5;">
+        <div style="font-size:22px;margin-bottom:8px;">☁️</div>
+        <div style="font-size:12px;color:#0d6e3f;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Plataforma 1</div>
+        <div style="font-size:16px;font-weight:700;color:#1a2332;margin-top:4px;">Correo Hosty / Webmail</div>
+        <div style="font-size:12px;color:#667;margin-top:6px;">Acceso al correo corporativo SMI Consultores vía web</div>
+      </div>
+      <div style="background:#e8f4ff;border-radius:10px;padding:18px;border:1px solid #b3d4f5;">
+        <div style="font-size:22px;margin-bottom:8px;">🪟</div>
+        <div style="font-size:12px;color:#0050a0;font-weight:700;text-transform:uppercase;letter-spacing:1px;">Plataforma 2</div>
+        <div style="font-size:16px;font-weight:700;color:#1a2332;margin-top:4px;">Nube Microsoft / OneDrive</div>
+        <div style="font-size:12px;color:#667;margin-top:6px;">Acceso al ecosistema Microsoft 365 y recursos compartidos</div>
+      </div>
+    </div>
+  </div>
+  <div class="divider"></div>
+
+  <!-- ════ SECCIÓN 1: HOSTY ════ -->
+  <div class="section-header">
+    <div class="num">1</div>
+    <div>
+      <h2>Cuenta Hosty — Correo Corporativo Webmail</h2>
+      <p>Acceso al correo electrónico SMI Consultores a través del servidor Hosty</p>
+    </div>
+  </div>
+  <div class="section-body">
+
+    <div class="info-box">
+      <h3>🔑 Credenciales de Acceso — Hosty Webmail</h3>
+      <div class="cred-row">
+        <span class="cred-label">URL Acceso:</span>
+        <span class="cred-url">https://s480.v2nets.com:2096/</span>
+      </div>
+      <div class="cred-row">
+        <span class="cred-label">Usuario:</span>
+        <span class="cred-val">eperez@smiconsultores.cl</span>
+      </div>
+      <div class="cred-row">
+        <span class="cred-label">Contraseña:</span>
+        <span class="cred-val">Eduardo2026</span>
+      </div>
+    </div>
+
+    <p style="font-size:13px;font-weight:700;color:#1a2332;margin-bottom:12px;">PASOS PARA INGRESAR AL WEBMAIL HOSTY:</p>
+    <ol class="steps">
+      <li>
+        <div class="step-num">1</div>
+        <p>Abra su navegador web (Google Chrome, Mozilla Firefox o Microsoft Edge) e ingrese la siguiente dirección en la barra de URL: <strong>https://s480.v2nets.com:2096/</strong></p>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <p>Se cargará la pantalla de inicio de sesión del Webmail cPanel. Verá los campos <strong>"Email Address"</strong> y <strong>"Password"</strong>.</p>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <p>En el campo <strong>Email Address</strong>, escriba: <strong>eperez@smiconsultores.cl</strong></p>
+      </li>
+      <li>
+        <div class="step-num">4</div>
+        <p>En el campo <strong>Password</strong>, ingrese la contraseña: <strong>Eduardo2026</strong></p>
+      </li>
+      <li>
+        <div class="step-num">5</div>
+        <p>Haga clic en el botón azul <strong>"Log in"</strong> para ingresar. Será redirigido a su bandeja de entrada corporativa.</p>
+      </li>
+    </ol>
+
+    <div class="img-wrap">
+      <img src="hosty_webmail_login_1778815903904.png" alt="Pantalla de inicio de sesión Hosty Webmail" onerror="this.style.display='none'">
+      <div class="img-caption">Fig. 1 — Pantalla de acceso Hosty Webmail (https://s480.v2nets.com:2096/)</div>
+    </div>
+
+    <div class="alert">
+      <div class="alert-icon">ℹ️</div>
+      <p>Esta plataforma corresponde al servicio de hosting contratado por <strong>SMI Consultores</strong> a través de 
+      <strong>Hosty</strong>. Desde aquí podrá gestionar su correo electrónico corporativo, enviar y recibir mensajes, 
+      y administrar su cuenta de email.</p>
+    </div>
+  </div>
+
+  <!-- ════ SECCIÓN 2: MICROSOFT ════ -->
+  <div class="section-header">
+    <div class="num">2</div>
+    <div>
+      <h2>Cuenta Microsoft — Nube / OneDrive Corporativo</h2>
+      <p>Acceso al ecosistema Microsoft 365 y archivos compartidos de SMI Consultores</p>
+    </div>
+  </div>
+  <div class="section-body">
+
+    <div class="info-box">
+      <h3>🔑 Credenciales de Acceso — Microsoft 365</h3>
+      <div class="cred-row">
+        <span class="cred-label">URL Acceso:</span>
+        <span class="cred-url">https://login.microsoftonline.com/</span>
+      </div>
+      <div class="cred-row">
+        <span class="cred-label">Usuario:</span>
+        <span class="cred-val">eperez@smiconsultores.cl</span>
+      </div>
+      <div class="cred-row">
+        <span class="cred-label">Contraseña:</span>
+        <span class="cred-val">SmiEduardo2026</span>
+      </div>
+    </div>
+
+    <p style="font-size:13px;font-weight:700;color:#1a2332;margin-bottom:12px;">PASOS PARA INGRESAR A MICROSOFT 365 / ONEDRIVE:</p>
+    <ol class="steps">
+      <li>
+        <div class="step-num">1</div>
+        <p>Abra su navegador web y navegue a: <strong>https://login.microsoftonline.com/</strong> o acceda directamente desde <strong>https://portal.office.com</strong></p>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <p>Verá la pantalla de inicio de sesión de Microsoft con el campo <strong>"Correo electrónico, teléfono o Skype"</strong>. Ingrese: <strong>eperez@smiconsultores.cl</strong> y haga clic en <strong>"Siguiente"</strong>.</p>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <p>En la siguiente pantalla, ingrese la contraseña: <strong>SmiEduardo2026</strong> y confirme el inicio de sesión.</p>
+      </li>
+      <li>
+        <div class="step-num">4</div>
+        <p>Una vez dentro del portal Microsoft 365, haga clic en el ícono de <strong>OneDrive</strong> (ícono de nube) en el menú de aplicaciones (cuadrícula de puntos en la esquina superior izquierda).</p>
+      </li>
+      <li>
+        <div class="step-num">5</div>
+        <p>En el panel izquierdo de OneDrive, localice y haga clic en la sección <strong>"Compartido"</strong> para acceder a todos los archivos y carpetas compartidas por SMI Consultores.</p>
+      </li>
+    </ol>
+
+    <div class="img-wrap">
+      <img src="microsoft_login_page_1778815924998.png" alt="Pantalla inicio de sesión Microsoft" onerror="this.style.display='none'">
+      <div class="img-caption">Fig. 2 — Pantalla de inicio de sesión Microsoft 365 (login.microsoftonline.com)</div>
+    </div>
+  </div>
+
+  <!-- ════ SECCIÓN 3: ONEDRIVE COMPARTIDO ════ -->
+  <div class="section-header">
+    <div class="num">3</div>
+    <div>
+      <h2>Recursos Compartidos en OneDrive</h2>
+      <p>Carpetas y archivos corporativos de SMI Consultores disponibles en la sección Compartido</p>
+    </div>
+  </div>
+  <div class="section-body">
+    <p style="font-size:14px;color:#2c3e50;line-height:1.8;margin-bottom:20px;">
+      Al ingresar a <strong>OneDrive</strong> con su cuenta Microsoft corporativa, encontrará en la sección 
+      <strong>"Compartido"</strong> del panel izquierdo todas las carpetas y documentos que SMI Consultores 
+      ha puesto a su disposición como parte del equipo de trabajo.
+    </p>
+
+    <div class="alert">
+      <div class="alert-icon">📁</div>
+      <p><strong>En la sección "Compartido" encontrará:</strong> carpetas de proyectos SMI 2024, SMI 2023, 
+      SMI MATRIZ, archivos de trabajo, planillas, documentación técnica y todos los recursos corporativos 
+      compartidos por el equipo SMI Consultores.</p>
+    </div>
+
+    <!-- IMAGEN ANOTADA CON FLECHA CSS -->
+    <div style="margin:24px 0;">
+      <div class="arrow-badge">
+        ⬅ HAGA CLIC AQUÍ — Sección "Compartido"
+      </div>
+      <div style="position:relative;border-radius:12px;overflow:hidden;border:3px solid #e53935;box-shadow:0 6px 24px rgba(229,57,53,0.2);">
+        <img src="onedrive_shared_section_1778816063617.png" alt="OneDrive sección Compartido con carpetas SMI" style="width:100%;display:block;" onerror="this.style.display='none'">
+        <!-- Flecha SVG superpuesta -->
+        <svg style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;" viewBox="0 0 1270 870" preserveAspectRatio="none">
+          <!-- Flecha roja apuntando a "Compartido" en el menú lateral -->
+          <defs>
+            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+              <polygon points="0 0, 10 3.5, 0 7" fill="#e53935"/>
+            </marker>
+          </defs>
+          <line x1="340" y1="372" x2="235" y2="372" stroke="#e53935" stroke-width="6" marker-end="url(#arrowhead)"/>
+          <!-- Rectángulo destacando carpetas SMI -->
+          <rect x="350" y="275" width="560" height="175" rx="6" fill="none" stroke="#e53935" stroke-width="4" stroke-dasharray="10,4"/>
+          <!-- Texto de anotación -->
+          <rect x="342" y="350" width="220" height="28" rx="4" fill="#e53935"/>
+          <text x="452" y="369" text-anchor="middle" fill="white" font-family="Arial" font-weight="bold" font-size="14">← IR A COMPARTIDO</text>
+          <rect x="354" y="250" width="200" height="26" rx="4" fill="#e53935"/>
+          <text x="454" y="267" text-anchor="middle" fill="white" font-family="Arial" font-weight="bold" font-size="13">Carpetas SMI Consultores</text>
+        </svg>
+      </div>
+      <div style="background:#fce4e4;padding:12px 16px;font-size:12px;color:#b71c1c;text-align:center;font-weight:600;border:2px solid #e53935;border-top:none;border-radius:0 0 12px 12px;">
+        ▲ La flecha y el recuadro rojo indican la sección "Compartido" donde se encuentran las carpetas de SMI Consultores
+      </div>
+    </div>
+
+    <p style="font-size:13px;font-weight:700;color:#1a2332;margin:20px 0 12px;">CÓMO ACCEDER A LOS RECURSOS COMPARTIDOS:</p>
+    <ol class="steps">
+      <li>
+        <div class="step-num">1</div>
+        <p>Dentro de OneDrive, localice en el <strong>panel izquierdo</strong> la opción <strong>"Compartido"</strong> (ícono de dos personas). Haga clic sobre ella.</p>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <p>Verá las pestañas <strong>"Con usted"</strong> y <strong>"Por usted"</strong>. Seleccione <strong>"Con usted"</strong> para ver todo lo que SMI Consultores ha compartido.</p>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <p>Encontrará carpetas como <strong>SMI 2024</strong>, <strong>SMI 2023</strong>, <strong>SMI MATRIZ</strong> y otros archivos corporativos compartidos por <strong>freddy rosas pino</strong> y demás miembros del equipo.</p>
+      </li>
+      <li>
+        <div class="step-num">4</div>
+        <p>Haga doble clic en cualquier carpeta para acceder a su contenido. Los archivos se pueden abrir directamente desde el navegador sin necesidad de descargarlos.</p>
+      </li>
+    </ol>
+
+    <div class="alert">
+      <div class="alert-icon">✅</div>
+      <p><strong>Recuerde:</strong> Usted tiene acceso compartido a <strong>ambas plataformas</strong> — tanto a 
+      <strong>Hosty (correo corporativo)</strong> como a la <strong>Nube Microsoft / OneDrive (archivos y documentos)</strong>. 
+      Ambos accesos han sido habilitados por SMI Consultores para facilitar su trabajo y colaboración con el equipo.</p>
+    </div>
+  </div>
+
+  <!-- ════ SECCIÓN 4: CONFIGURACIÓN IMAP — OUTLOOK ════ -->
+  <div class="section-header">
+    <div class="num">4</div>
+    <div>
+      <h2>Configuración IMAP — Cliente de Escritorio (Outlook)</h2>
+      <p>Parámetros para configurar el correo corporativo en Outlook u otro cliente de escritorio</p>
+    </div>
+  </div>
+  <div class="section-body">
+    <p style="font-size:14px;color:#2c3e50;line-height:1.8;margin-bottom:20px;">
+      Además del acceso vía webmail, puede configurar su cuenta de correo corporativo directamente en 
+      <strong>Microsoft Outlook</strong> u otro cliente de correo de escritorio (Thunderbird, Mail de Windows, etc.) 
+      utilizando el protocolo <strong>IMAP</strong>, que permite sincronizar sus mensajes en todos sus dispositivos.
+    </p>
+
+    <!-- DATOS IMAP ENTRANTE -->
+    <div class="info-box">
+      <h3>📥 Servidor de Correo Entrante — IMAP</h3>
+      <div class="cred-row">
+        <span class="cred-label">Protocolo:</span>
+        <span class="cred-val" style="background:#0d6e3f;">IMAP</span>
+      </div>
+      <div class="cred-row">
+        <span class="cred-label">Servidor:</span>
+        <span class="cred-url">mail.smiconsultores.cl</span>
+      </div>
+      <div class="cred-row">
+        <span class="cred-label">Puerto:</span>
+        <span class="cred-val">993</span>
+      </div>
+      <div class="cred-row">
+        <span class="cred-label">Seguridad:</span>
+        <span class="cred-val" style="background:#1a5276;">SSL / TLS</span>
+      </div>
+      <div class="cred-row">
+        <span class="cred-label">Usuario:</span>
+        <span class="cred-val">eperez@smiconsultores.cl</span>
+      </div>
+      <div class="cred-row">
+        <span class="cred-label">Contraseña:</span>
+        <span class="cred-val">Eduardo2026</span>
+      </div>
+    </div>
+
+    <!-- DATOS SMTP SALIENTE -->
+    <div class="info-box" style="background:#e8f4ff;border-left-color:#0050a0;">
+      <h3 style="color:#0050a0;">📤 Servidor de Correo Saliente — SMTP</h3>
+      <div class="cred-row">
+        <span class="cred-label">Protocolo:</span>
+        <span class="cred-val" style="background:#0050a0;">SMTP</span>
+      </div>
+      <div class="cred-row">
+        <span class="cred-label">Servidor:</span>
+        <span class="cred-url">mail.smiconsultores.cl</span>
+      </div>
+      <div class="cred-row">
+        <span class="cred-label">Puerto:</span>
+        <span class="cred-val" style="background:#0050a0;">465</span>
+      </div>
+      <div class="cred-row">
+        <span class="cred-label">Seguridad:</span>
+        <span class="cred-val" style="background:#1a5276;">SSL / TLS</span>
+      </div>
+      <div class="cred-row">
+        <span class="cred-label">Autenticación:</span>
+        <span class="cred-val" style="background:#1a5276;">Requerida</span>
+      </div>
+      <div class="cred-row">
+        <span class="cred-label">Usuario:</span>
+        <span class="cred-val">eperez@smiconsultores.cl</span>
+      </div>
+      <div class="cred-row">
+        <span class="cred-label">Contraseña:</span>
+        <span class="cred-val">Eduardo2026</span>
+      </div>
+    </div>
+
+    <!-- TABLA RESUMEN TÉCNICO -->
+    <p style="font-size:13px;font-weight:700;color:#1a2332;margin-bottom:14px;">RESUMEN DE PARÁMETROS TÉCNICOS:</p>
+    <table style="width:100%;border-collapse:collapse;font-size:13px;margin-bottom:24px;">
+      <thead>
+        <tr style="background:#1a2332;color:#fff;">
+          <th style="padding:12px 14px;text-align:left;">Parámetro</th>
+          <th style="padding:12px 14px;text-align:left;">Entrante (IMAP)</th>
+          <th style="padding:12px 14px;text-align:left;">Saliente (SMTP)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background:#f0f8f4;">
+          <td style="padding:11px 14px;font-weight:600;">Servidor</td>
+          <td style="padding:11px 14px;font-family:monospace;color:#0050a0;">mail.smiconsultores.cl</td>
+          <td style="padding:11px 14px;font-family:monospace;color:#0050a0;">mail.smiconsultores.cl</td>
+        </tr>
+        <tr style="background:#fff;">
+          <td style="padding:11px 14px;font-weight:600;">Puerto</td>
+          <td style="padding:11px 14px;font-family:monospace;font-weight:700;color:#0d6e3f;">993</td>
+          <td style="padding:11px 14px;font-family:monospace;font-weight:700;color:#0d6e3f;">465</td>
+        </tr>
+        <tr style="background:#f0f8f4;">
+          <td style="padding:11px 14px;font-weight:600;">Seguridad</td>
+          <td style="padding:11px 14px;">SSL / TLS</td>
+          <td style="padding:11px 14px;">SSL / TLS</td>
+        </tr>
+        <tr style="background:#fff;">
+          <td style="padding:11px 14px;font-weight:600;">Autenticación</td>
+          <td style="padding:11px 14px;">✅ Requerida</td>
+          <td style="padding:11px 14px;">✅ Requerida</td>
+        </tr>
+        <tr style="background:#f0f8f4;">
+          <td style="padding:11px 14px;font-weight:600;">Usuario</td>
+          <td colspan="2" style="padding:11px 14px;font-family:monospace;font-weight:600;">eperez@smiconsultores.cl</td>
+        </tr>
+        <tr style="background:#fff;">
+          <td style="padding:11px 14px;font-weight:600;">Contraseña</td>
+          <td colspan="2" style="padding:11px 14px;font-family:monospace;font-weight:700;color:#e53935;">Eduardo2026</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- PASOS OUTLOOK -->
+    <p style="font-size:13px;font-weight:700;color:#1a2332;margin-bottom:12px;">PASOS PARA CONFIGURAR EN MICROSOFT OUTLOOK:</p>
+    <ol class="steps">
+      <li>
+        <div class="step-num">1</div>
+        <p>Abra <strong>Microsoft Outlook</strong>. Vaya a <strong>Archivo → Agregar cuenta</strong> (o al iniciar por primera vez ingrese el correo directamente).</p>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <p>Ingrese su dirección de correo: <strong>eperez@smiconsultores.cl</strong> y haga clic en <strong>Conectar</strong>. Si Outlook no detecta la configuración automáticamente, seleccione <strong>"Configuración manual"</strong>.</p>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <p>Seleccione el tipo de cuenta: <strong>IMAP</strong>.</p>
+      </li>
+      <li>
+        <div class="step-num">4</div>
+        <p>En <strong>Servidor de correo entrante</strong> ingrese: <strong>mail.smiconsultores.cl</strong> — Puerto: <strong>993</strong> — Cifrado: <strong>SSL/TLS</strong>.</p>
+      </li>
+      <li>
+        <div class="step-num">5</div>
+        <p>En <strong>Servidor de correo saliente (SMTP)</strong> ingrese: <strong>mail.smiconsultores.cl</strong> — Puerto: <strong>465</strong> — Cifrado: <strong>SSL/TLS</strong>.</p>
+      </li>
+      <li>
+        <div class="step-num">6</div>
+        <p>Ingrese su contraseña: <strong>Eduardo2026</strong> y confirme que la autenticación SMTP está <strong>activada</strong>. Haga clic en <strong>Siguiente</strong> y luego en <strong>Listo</strong>.</p>
+      </li>
+    </ol>
+
+    <div class="alert">
+      <div class="alert-icon">💡</div>
+      <p><strong>¿Por qué IMAP?</strong> IMAP sincroniza sus correos en tiempo real entre todos sus dispositivos 
+      (PC, notebook, smartphone). Los mensajes se almacenan en el servidor, por lo que siempre tendrá acceso 
+      a su historial completo desde cualquier equipo. Es el protocolo <strong>recomendado</strong> para uso profesional.</p>
+    </div>
+  </div>
+  <div class="divider"></div>
+
+  <!-- ════ SECCIÓN 5: RESUMEN ════ -->
+  <div class="section-header">
+    <div class="num">5</div>
+    <div>
+      <h2>Resumen de Accesos</h2>
+      <p>Referencia rápida de credenciales y plataformas</p>
+    </div>
+  </div>
+  <div class="section-body">
+    <table style="width:100%;border-collapse:collapse;font-size:13px;">
+      <thead>
+        <tr style="background:#1a2332;color:#fff;">
+          <th style="padding:14px 16px;text-align:left;border-radius:8px 0 0 0;">Plataforma</th>
+          <th style="padding:14px 16px;text-align:left;">URL de Acceso</th>
+          <th style="padding:14px 16px;text-align:left;">Usuario</th>
+          <th style="padding:14px 16px;text-align:left;border-radius:0 8px 0 0;">Contraseña</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background:#f0f8f4;">
+          <td style="padding:14px 16px;font-weight:700;color:#0d6e3f;">☁️ Hosty Webmail</td>
+          <td style="padding:14px 16px;font-family:monospace;font-size:11px;color:#0050a0;">https://s480.v2nets.com:2096/</td>
+          <td style="padding:14px 16px;font-family:monospace;font-weight:600;">eperez@smiconsultores.cl</td>
+          <td style="padding:14px 16px;font-family:monospace;font-weight:700;color:#e53935;">Eduardo2026</td>
+        </tr>
+        <tr style="background:#e8f4ff;">
+          <td style="padding:14px 16px;font-weight:700;color:#0050a0;">🪟 Microsoft 365</td>
+          <td style="padding:14px 16px;font-family:monospace;font-size:11px;color:#0050a0;">https://login.microsoftonline.com/</td>
+          <td style="padding:14px 16px;font-family:monospace;font-weight:600;">eperez@smiconsultores.cl</td>
+          <td style="padding:14px 16px;font-family:monospace;font-weight:700;color:#e53935;">SmiEduardo2026</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="margin-top:24px;background:linear-gradient(135deg,#0d1b2a,#1a3a2a);border-radius:12px;padding:24px;text-align:center;">
+      <p style="color:#3ec16a;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">SYSTEM DATA · VMCC</p>
+      <p style="color:#8faac0;font-size:12px;">Documento preparado por el área técnica de SMI Consultores · Uso interno confidencial · Mayo 2026</p>
+    </div>
+  </div>
+
+  <!-- PIE DE PÁGINA -->
+  <div class="doc-footer">
+    <div><p>SMI Consultores · Guía de Acceso a Plataformas v1.0</p></div>
+    <div class="brand">SYSTEM DATA · VMCC</div>
+    <div><p>Documento Confidencial · Mayo 2026</p></div>
+  </div>
+
+</div>
+</body>
+</html>
